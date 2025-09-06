@@ -44,11 +44,16 @@ class OauthService {
   // 구글 로그인을 진행해 OauthCredential을 획득합니다
   Future<firebase_auth.OAuthCredential?> _getCredentialByGoogleSignIn() async {
     try {
-      final googleAccount = await _googleSignIn.attemptLightweightAuthentication();
-      final googleAuthResult = googleAccount?.authentication;
+      final googleAccount = await _googleSignIn.authenticate();
+      final googleAuthResult = googleAccount.authentication;
 
       return firebase_auth.GoogleAuthProvider.credential(idToken: googleAuthResult?.idToken);
-    } on Exception catch (error, stackTrace) {
+    } on GoogleSignInException catch (error) {
+      if(error.code == GoogleSignInExceptionCode.canceled) return null;
+
+      debugPrint('Error occurred on google login $error');
+      return null;
+    }on Exception catch (error) {
       debugPrint('Error occurred on google login $error');
       return null;
     }
