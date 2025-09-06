@@ -1,0 +1,30 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "mini-games-bf495",
+          "appId": "1:734633138448:android:d458b5a05e737494036d95",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "mini-games-bf495",
+          "appId": "1:734633138448:ios:a764a020750a8f74036d95",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "mini-games-bf495",
+          "configurations": {
+            "android": "1:734633138448:android:d458b5a05e737494036d95",
+            "ios": "1:734633138448:ios:a764a020750a8f74036d95"
+          }
+        }
+      }
+    }
+  }
+}
