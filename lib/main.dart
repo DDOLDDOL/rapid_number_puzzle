@@ -4,15 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:rapid_number_puzzle/auth/blocs/auth_bloc.dart';
 import 'package:rapid_number_puzzle/auth/screens/login_screen.dart';
 import 'package:rapid_number_puzzle/auth/services/oauth_service.dart';
-import 'package:rapid_number_puzzle/auth/widgets/auth_guard.dart';
 import 'package:rapid_number_puzzle/firebase_options.dart';
 import 'package:rapid_number_puzzle/home/screens/home_screen.dart';
 import 'package:rapid_number_puzzle/number_puzzle/repository/number_puzzle_repository.dart';
@@ -78,14 +75,7 @@ class _MultiRepositoryProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider(
-          lazy: false,
-          create: (_) =>
-          NumberPuzzleRepository()
-            ..fetchPuzzleRecords(),
-        ),
-      ],
+      providers: [RepositoryProvider(create: (_) => NumberPuzzleRepository())],
       child: child,
     );
   }
