@@ -39,7 +39,7 @@ BLoC
 <br>
 <br>
 
-## ⚡️ How to Get Started
+## ⚡️ How to Get Started (안드로이드는 릴리즈 키 해시가 없으므로 디버깅만 가능)
 1. 프로젝트 clone / fork
 2. just init (JustFile 커맨드)
 3. flutter run
