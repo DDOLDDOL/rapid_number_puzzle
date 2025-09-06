@@ -14,11 +14,11 @@ class FetchPuzzleRecordsCubit extends Cubit<FetchPuzzleRecordsState> {
 
   final NumberPuzzleRepository _repository;
 
-  Future<void> fetchPuzzleRecords(int count) async {
+  Future<void> fetchPuzzleRecords(int boardSize, int count) async {
     emit(const FetchPuzzleRecordsState.loading());
 
     try {
-      final records = await _repository.fetchPuzzleRecords(count);
+      final records = await _repository.fetchPuzzleRecords(boardSize, count);
       emit(FetchPuzzleRecordsState.loaded(records));
     } on FirebaseException catch (error) {
       emit(FetchPuzzleRecordsState.error('기록 조회 실패', parseFirebaseErrorMessage(error)));
