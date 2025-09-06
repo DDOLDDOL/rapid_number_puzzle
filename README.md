@@ -92,3 +92,7 @@ lib/
 - Firebase RTDB로 데이터 저장 및 불러오기
 - Cubit으로 Save/Fetch 비동기 핸들링
 - NumberPuzzleBoard 구현 (Cubit & Animation)
+<br>
+
+### Merge#3 `fix/logout -> main`
+- 로그아웃 시 HomeMenuBottomSheet이 닫히지 않는 현상 수정
