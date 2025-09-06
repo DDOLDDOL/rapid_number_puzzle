@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:rapid_number_puzzle/common/utils/text_styles.dart';
 
 class HomeMenuBottomSheetTile extends StatelessWidget {
   const HomeMenuBottomSheetTile({super.key, required this.label, this.onTap});
@@ -18,7 +17,12 @@ class HomeMenuBottomSheetTile extends StatelessWidget {
       child: Container(
         color: Colors.transparent,
         padding: EdgeInsets.all(16),
-        child: Center(child: Text(label, style: AppTextStyles.menu)),
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+          ),
+        ),
       ),
     );
   }
