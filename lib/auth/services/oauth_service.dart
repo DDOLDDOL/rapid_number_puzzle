@@ -45,7 +45,7 @@ class OauthService {
   Future<firebase_auth.OAuthCredential?> _getCredentialByGoogleSignIn() async {
     try {
       final googleAccount = await _googleSignIn.authenticate();
-      final googleAuthResult = googleAccount?.authentication;
+      final googleAuthResult = googleAccount.authentication;
 
       return firebase_auth.GoogleAuthProvider.credential(idToken: googleAuthResult?.idToken);
     } on GoogleSignInException catch (error) {
