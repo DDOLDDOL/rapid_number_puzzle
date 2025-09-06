@@ -96,3 +96,7 @@ lib/
 
 ### Merge#3 `fix/logout -> main`
 - 로그아웃 시 HomeMenuBottomSheet이 닫히지 않는 현상 수정
+<br>
+
+### Merge#4 `fix/number-puzzle -> main`
+- 게임에서 마지막 번호를 누를 차례가 아닐 때 누르면 게임이 끝나지 않고 타이머만 멈추는 버그 해결
