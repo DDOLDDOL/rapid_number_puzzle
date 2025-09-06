@@ -4,7 +4,7 @@ import 'package:rapid_number_puzzle/common/utils/palette.dart';
 import 'package:rapid_number_puzzle/number_puzzle/cubits/number_puzzle_cubit.dart';
 import 'package:rapid_number_puzzle/number_puzzle/cubits/save_puzzle_record_cubit.dart';
 import 'package:rapid_number_puzzle/number_puzzle/repository/number_puzzle_repository.dart';
-import 'package:rapid_number_puzzle/number_puzzle/widgets/clear_puzzle_result_viewer.dart';
+import 'package:rapid_number_puzzle/number_puzzle/widgets/clear_result_leader_board.dart';
 import 'package:rapid_number_puzzle/number_puzzle/widgets/number_puzzle_board.dart';
 import 'package:rapid_number_puzzle/number_puzzle/widgets/number_puzzle_timer.dart';
 
@@ -106,7 +106,10 @@ class _ViewState extends State<_View> with TickerProviderStateMixin {
                 if (state.isGameCleared)
                   Positioned.fill(
                     child: Center(
-                      child: ClearPuzzleResultViewer(clearTimeText: state.clearTimeText),
+                      child: ClearResultLeaderBoard(
+                        boardSize: state.boardSize,
+                        clearTimeText: state.clearTimeText,
+                      ),
                     ),
                   ),
               ],
