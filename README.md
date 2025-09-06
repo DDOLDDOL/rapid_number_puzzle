@@ -86,6 +86,7 @@ lib/
 - User Auth 전역 관리를 위해 AuthGuard 구현
 - LoginScreen 구현 (Animation)
 <br>
+
 ### Merge#2 `feature/number-puzzle -> main`
 - Number Puzzle 및 기록 & 랭킹 리더보드 구현
 - Firebase RTDB로 데이터 저장 및 불러오기
