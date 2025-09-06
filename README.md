@@ -85,3 +85,9 @@ lib/
 - 로딩/에러 분기 처리 및 상태 관리를 위해 AuthBloc 구현
 - User Auth 전역 관리를 위해 AuthGuard 구현
 - LoginScreen 구현 (Animation)
+<br>
+### Merge#2 `feature/number-puzzle -> main`
+- Number Puzzle 및 기록 & 랭킹 리더보드 구현
+- Firebase RTDB로 데이터 저장 및 불러오기
+- Cubit으로 Save/Fetch 비동기 핸들링
+- NumberPuzzleBoard 구현 (Cubit & Animation)
