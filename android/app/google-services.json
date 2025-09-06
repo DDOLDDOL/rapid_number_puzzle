@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "734633138448",
+    "firebase_url": "https://mini-games-bf495-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "mini-games-bf495",
     "storage_bucket": "mini-games-bf495.firebasestorage.app"
   },
@@ -12,7 +13,12 @@
           "package_name": "com.ddolddol.rapid_number_puzzle"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "734633138448-p9d64pc9g1bupdu46uopr5gnko6s84tp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDMGw-Hzn3rH5NjTtJ9Qe_hZzQMyN9E7-o"
@@ -20,7 +26,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734633138448-p9d64pc9g1bupdu46uopr5gnko6s84tp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "734633138448-lqoopilfus12s1haqe8kd6273jr7lgi9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ddolddol.rapidNumberPuzzle"
+              }
+            }
+          ]
         }
       }
     }
