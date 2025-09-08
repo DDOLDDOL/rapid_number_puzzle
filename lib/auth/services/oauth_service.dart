@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:rapid_number_puzzle/auth/utils/enums.dart';
 
 class OauthService {
   /// Signleton
@@ -17,13 +18,12 @@ class OauthService {
   // Google Oauth 클라이언트
   late final GoogleSignIn _googleSignIn;
 
-  // Firebase Auth 클라이언
+  // Firebase Auth 클라이언트
   late final firebase_auth.FirebaseAuth _firebaseAuth;
 
-  Future<void> signIn(String oauthProvider) async {
-    final credential = switch (oauthProvider) {
-      'google.com' => await _getCredentialByGoogleSignIn(),
-      _ => null,
+  Future<void> signIn(OauthPlatform oauthPlatform) async {
+    final credential = switch (oauthPlatform) {
+      OauthPlatform.google => await _getCredentialByGoogleSignIn(),
     };
 
     if (credential == null) return;
@@ -33,9 +33,9 @@ class OauthService {
   }
 
   /// 앱에서의 로그아웃을 진행합니다
-  void signOut(String oauthProvider) {
+  void signOut(OauthPlatform oauthPlatform) {
     _firebaseAuth.signOut();
-    _signOutOauth(oauthProvider);
+    _signOutOauth(oauthPlatform);
   }
 
   /// Firebase Auth의 User를 감시하는 Stream 입니다
@@ -49,23 +49,20 @@ class OauthService {
 
       return firebase_auth.GoogleAuthProvider.credential(idToken: googleAuthResult?.idToken);
     } on GoogleSignInException catch (error) {
-      if(error.code == GoogleSignInExceptionCode.canceled) return null;
+      if (error.code == GoogleSignInExceptionCode.canceled) return null;
 
       debugPrint('Error occurred on google login $error');
       return null;
-    }on Exception catch (error) {
+    } on Exception catch (error) {
       debugPrint('Error occurred on google login $error');
       return null;
     }
   }
 
   // Oauth 클라이언트 로그아웃을 진행합니다
-  void _signOutOauth(String oauthProvider) async {
-    final signOutFunction = switch (oauthProvider) {
-      'google.com' => _googleSignIn.signOut,
-      _ => null,
+  void _signOutOauth(OauthPlatform oauthPlatform) async {
+    return switch (oauthPlatform) {
+      OauthPlatform.google => await _googleSignIn.signOut(),
     };
-
-    await signOutFunction?.call();
   }
 }

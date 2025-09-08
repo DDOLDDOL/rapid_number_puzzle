@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rapid_number_puzzle/auth/blocs/auth_bloc.dart';
+import 'package:rapid_number_puzzle/auth/utils/enums.dart';
 
 import 'package:rapid_number_puzzle/auth/widgets/google_sign_in_button.dart';
 
@@ -250,9 +251,8 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
           BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
               return GoogleSignInButton(
-                isLoading: state.isFetchingUser,
                 onPressed: () => context.read<AuthBloc?>()?.add(
-                  AuthEvent.oauthSignInRequested(oauthProvider: 'google.com'),
+                  AuthEvent.oauthSignInRequested(oauthPlatform: OauthPlatform.google),
                 ),
               );
             },

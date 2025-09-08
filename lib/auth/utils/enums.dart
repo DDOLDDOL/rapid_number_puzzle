@@ -1,0 +1,1 @@
+enum OauthPlatform { google }

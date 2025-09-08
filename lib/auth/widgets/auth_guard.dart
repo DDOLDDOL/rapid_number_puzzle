@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:rapid_number_puzzle/auth/blocs/auth_bloc.dart';
 
 class AuthGuard extends StatelessWidget {
-  const AuthGuard({super.key, required this.home, required this.login,});
+  const AuthGuard({super.key, required this.home, required this.login});
 
   final Widget home;
   final Widget login;
@@ -17,10 +17,17 @@ class AuthGuard extends StatelessWidget {
         context.go('/');
       },
       builder: (context, state) {
-        if (state.hasError) return _ErrorView(errorMessage: state.errorMessage!);
-        // if (state.isFetchingUser) return _LoadingView();
+        // user != null인지를 우선 보고, null이 아니라면 home으로 이동
+        if (state.authorized) return home;
 
-        return state.user == null ? login : home;
+        // user == null && errorMessage != null인 상황에서 에러 뷰 호출
+        if (state.hasError) return _ErrorView(errorMessage: state.errorMessage!);
+
+        // user == null && !hasError && !isFetchingUser인 상황은 로그아웃 후라고 판단 -> 로그아웃으로 이동
+        if (state.unauthorized) return login;
+
+        // 그 외에는 로딩 상황으로 간주하여 로딩 뷰 노출
+        return const _LoadingView();
       },
     );
   }
@@ -33,7 +40,7 @@ class _ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(errorMessage));
+    return Scaffold(body: Center(child: Text(errorMessage)));
   }
 }
 
@@ -42,6 +49,6 @@ class _LoadingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: CircularProgressIndicator());
+    return Scaffold(body: const Center(child: CircularProgressIndicator()));
   }
 }
