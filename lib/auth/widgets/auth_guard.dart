@@ -40,7 +40,7 @@ class _ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(errorMessage));
+    return Scaffold(body: Center(child: Text(errorMessage)));
   }
 }
 
