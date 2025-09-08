@@ -113,3 +113,12 @@ lib/
 
 ### Merge#5 `refactor/clean-up-code -> main`
 - 코드 정리
+<br>
+
+### Merge#6 `fix/auth-guard-routing -> main`
+- Auth Guard에서의 라우팅 오류를 해결하기 위해 Auth State 재정의
+  - hasError: errorMessage != null인지만 판단, true일 때 true 반환
+  - authorized: user != null인지만 판단, true일 때 true 반환
+  - unauthorized: 로딩 x, 에러 x 인 상태에서 user == null 일 때 (Default 상태, but Initial 상태는 아님) true 반환
+  - 나머지 경우는 모둔 로그인 로딩 상태로 간주 (Initial 상태)
+- 재정의한 Auth State를 이용해서 자동 로그인 시 로그인 화면을 거쳐 레벨 선택 화면으로 이동하는 현상 방지
